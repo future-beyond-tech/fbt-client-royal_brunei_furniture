@@ -1,0 +1,10 @@
+import type { MetadataRoute } from 'next'
+import { SITE_URL_CONST } from '@/lib/metadata'
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [{ userAgent: '*', allow: '/' }],
+    sitemap: `${SITE_URL_CONST}/sitemap.xml`,
+    host: SITE_URL_CONST,
+  }
+}
