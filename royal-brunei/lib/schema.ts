@@ -1,7 +1,4 @@
 import { z } from 'zod'
-import { CATEGORIES } from '@/lib/constants'
-
-const categoryNames = CATEGORIES.map((c) => c.name) as [string, ...string[]]
 
 export const EnquirySchema = z.object({
   name: z
@@ -11,9 +8,7 @@ export const EnquirySchema = z.object({
   phone: z
     .string()
     .regex(/^[6-9]\d{9}$/, 'Enter a valid 10-digit Indian mobile number'),
-  category: z.enum([...categoryNames, 'Other'], {
-    errorMap: () => ({ message: 'Please select a category' }),
-  }),
+  category: z.string().min(1, 'Please select a category'),
   message: z.string().max(500, 'Keep it under 500 characters').optional(),
 })
 

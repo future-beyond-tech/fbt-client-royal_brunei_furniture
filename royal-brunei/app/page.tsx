@@ -4,6 +4,7 @@ import { Contact } from '@/components/sections/Contact'
 import { FeaturedProducts } from '@/components/sections/FeaturedProducts'
 import { Hero } from '@/components/sections/Hero'
 import { MarqueeStrip } from '@/components/sections/MarqueeStrip'
+import Products from '@/components/sections/Products'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { WhyUs } from '@/components/sections/WhyUs'
 
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Hero />
       <MarqueeStrip />
       <Categories />
+      <Products />
       <FeaturedProducts />
       <WhyUs />
       <Brands />

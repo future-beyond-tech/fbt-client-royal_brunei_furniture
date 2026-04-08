@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle2, Loader2, Send } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { BUSINESS_INFO, CATEGORIES } from '@/lib/constants'
+import { BUSINESS_INFO } from '@/lib/constants'
+import { PRODUCT_CATEGORIES } from '@/lib/products'
 import { EnquirySchema, type EnquiryFormData } from '@/lib/schema'
 
 type SubmitState = 'idle' | 'loading' | 'success'
@@ -113,32 +114,63 @@ export function EnquiryForm() {
 
             <div>
               <label
-                htmlFor="category"
+                htmlFor="enquiry-category"
                 className="mb-2 block text-xs uppercase tracking-[0.2em] text-[var(--cream)]/70"
               >
                 Interested In
               </label>
               <select
-                id="category"
+                id="enquiry-category"
                 defaultValue=""
                 {...register('category')}
                 className="w-full border-b border-[var(--gold)]/30 bg-transparent py-3 text-[var(--cream)] outline-none transition-colors focus:border-[var(--gold)]"
               >
                 <option value="" disabled className="bg-[var(--walnut)]">
-                  Select a category
+                  Choose a category
                 </option>
-                {CATEGORIES.map((c) => (
-                  <option
-                    key={c.id}
-                    value={c.name}
+                {PRODUCT_CATEGORIES.map((cat) => (
+                  <optgroup
+                    key={cat.slug}
+                    label={cat.name}
                     className="bg-[var(--walnut)]"
                   >
-                    {c.name}
-                  </option>
+                    {cat.products.map((p) => (
+                      <option
+                        key={p.id}
+                        value={p.name}
+                        className="bg-[var(--walnut)]"
+                      >
+                        {p.name}
+                      </option>
+                    ))}
+                    <option
+                      value={cat.name}
+                      className="bg-[var(--walnut)]"
+                    >
+                      {`All ${cat.name}`}
+                    </option>
+                  </optgroup>
                 ))}
-                <option value="Other" className="bg-[var(--walnut)]">
-                  Other
-                </option>
+                <optgroup label="Other" className="bg-[var(--walnut)]">
+                  <option
+                    value="Repair & Restoration"
+                    className="bg-[var(--walnut)]"
+                  >
+                    Repair & Restoration
+                  </option>
+                  <option
+                    value="Bulk / Office Order"
+                    className="bg-[var(--walnut)]"
+                  >
+                    Bulk / Office Order
+                  </option>
+                  <option
+                    value="General Enquiry"
+                    className="bg-[var(--walnut)]"
+                  >
+                    General Enquiry
+                  </option>
+                </optgroup>
               </select>
               {errors.category && (
                 <p className="mt-2 text-xs text-[var(--gold)]">

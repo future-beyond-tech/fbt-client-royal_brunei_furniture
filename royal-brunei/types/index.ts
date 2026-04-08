@@ -53,6 +53,25 @@ export interface BusinessHours {
   readonly hours: string
 }
 
+export interface ProductItem {
+  readonly id: string
+  readonly name: string
+  readonly description: string
+  readonly keyword: string
+  readonly tag: string | null
+}
+
+export interface ProductCategory {
+  readonly id: string
+  readonly name: string
+  readonly slug: string
+  readonly tag: string
+  readonly description: string
+  readonly heroKeyword: string
+  readonly accentClass: string
+  readonly products: readonly ProductItem[]
+}
+
 export interface BusinessInfo {
   readonly name: string
   readonly proprietor: string

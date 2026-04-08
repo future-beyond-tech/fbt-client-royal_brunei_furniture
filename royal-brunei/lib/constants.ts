@@ -22,7 +22,7 @@ import type {
 
 export const NAV_LINKS: readonly NavLink[] = [
   { label: 'Collections', href: '#categories' },
-  { label: 'Featured', href: '#featured' },
+  { label: 'Products', href: '#products' },
   { label: 'Why Us', href: '#why-us' },
   { label: 'Brands', href: '#brands' },
   { label: 'Contact', href: '#contact' },
